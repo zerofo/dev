@@ -1,17 +1,17 @@
 var ropchain_array = new Uint32Array(150448);
 var ropchain = read_ptr_at(addrof(ropchain_array)+0x10);
 var ropchain_offset = 2;
-let set_gadget = function(val)
+var set_gadget = function(val)
 {
 ropchain_array[ropchain_offset++] = val | 0;
 ropchain_array[ropchain_offset++] = (val / 4294967296) | 0;
 }
-let set_gadgets = function(l)
+var set_gadgets = function(l)
 {
 for(let i = 0; i < l.length; i++)
 set_gadget(l[i]);
 }
-let db = function(data)
+var db = function(data)
 {
 for(let i = 0; i < data.length; i++)
 ropchain_array[ropchain_offset++] = data[i];
@@ -39540,35 +39540,27 @@ var printf_buf_end = null;
 var printf_ans = null;
 var printf_buf = null;
 var ropchain_array = null;
-var ropchain = null;
+//var ropchain = null;
 var ropchain_offset = null;
 var printf_buf_offset = null;
 var __swbuf_addr = null;
 if (main_ret == 179 || main_ret == 0) {
 	var main_ret = null;
 	window.msgs.innerHTML="<h1 style='color:green;font-size:25px;text-align:center;'>Exploit Loaded ✔</h1>";
-if (ExploitMira != null){
-  window.msgs.innerHTML="<h1 style='color:green;font-size:25px;text-align:center;'>破解成功! ✔ 正在加载 Mira ...</h1>";
-    let Loader=document.getElementById('loader').value;
-
-    if (Loader == "def"){
-        Loader = ExploitMira;}  
-    setTimeout(function(){
-    if (ExploitMira != "usb"){
-    let mirajs = document.createElement('script');mirajs.src = "./pl/"+ExploitMira+"_mira.js";document.getElementsByTagName('head')[0].appendChild(mirajs);
-    var binL=document.getElementById('jb_ver').value;
-    }
-    else{
-    var binL="usb";
-    }   
-    let loaderjs = document.createElement('script');loaderjs.src = "./pl/"+Loader+"_loader.js";
-    document.getElementsByTagName('head')[0].appendChild(loaderjs);
-    setTimeout(function(){
-    let loadbin = document.createElement('script');loadbin.src = "./common/"+binL+"_loadcode.js";
-    document.getElementsByTagName('head')[0].appendChild(loadbin);
-    },500);
-    },500);
-  }} 
+	if (ExploitMira != null){
+	  window.msgs.innerHTML="<h1 style='color:green;font-size:25px;text-align:center;'>破解成功! ✔ 正在加载 Mira ...</h1>";
+	    let Loader=document.getElementById('loader').value;
+	    if (Loader == "def"){
+	        Loader = ExploitMira;}  
+	    let mirajs = document.createElement('script');mirajs.src = "./pl/"+ExploitMira+"_mira.js";document.getElementsByTagName('head')[0].appendChild(mirajs);	
+	    let loaderjs = document.createElement('script');loaderjs.src = "./pl/"+Loader+"_loader.js";
+	    document.getElementsByTagName('head')[0].appendChild(loaderjs);
+	    setTimeout(function(){
+	    let loadbin = document.createElement('script');loadbin.src = "./common/"+jbver+"_loadcode.js";
+	    document.getElementsByTagName('head')[0].appendChild(loadbin);
+	    },500);
+	}
+} 
 else {
   window.msgs.innerHTML="<h1 style='color:red;font-size:25px;text-align:center;'>破解失败! <br> 请关机再开机重试.</h1>";}
 
